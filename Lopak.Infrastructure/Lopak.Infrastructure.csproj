@@ -1,0 +1,12 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netstandard2.0</TargetFramework>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\Lopak.Application\Lopak.Application.csproj" />
+    <ProjectReference Include="..\Lopak.Common\Lopak.Common.csproj" />
+  </ItemGroup>
+
+</Project>

@@ -1,0 +1,301 @@
+{
+  "x-generator": "NSwag v12.3.1.0 (NJsonSchema v9.14.1.0 (Newtonsoft.Json v11.0.0.0))",
+  "swagger": "2.0",
+  "info": {
+    "title": "My Title",
+    "version": "1.0.0"
+  },
+  "produces": [
+    "text/plain",
+    "application/json",
+    "text/json"
+  ],
+  "paths": {
+    "/api/SampleData/WeatherForecasts": {
+      "get": {
+        "tags": [
+          "SampleData"
+        ],
+        "operationId": "SampleData_WeatherForecasts",
+        "parameters": [
+          {
+            "type": "integer",
+            "name": "startDateIndex",
+            "in": "query",
+            "format": "int32",
+            "x-nullable": false
+          }
+        ],
+        "responses": {
+          "200": {
+            "x-nullable": true,
+            "description": "",
+            "schema": {
+              "type": "array",
+              "items": {
+                "$ref": "#/definitions/WeatherForecast"
+              }
+            }
+          }
+        }
+      }
+    },
+    "/wapi/Test/Create": {
+      "post": {
+        "tags": [
+          "Test"
+        ],
+        "operationId": "Test_Create",
+        "consumes": [
+          "application/json-patch+json",
+          "application/json",
+          "text/json",
+          "application/*+json"
+        ],
+        "parameters": [
+          {
+            "name": "command",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/CreateCityCommand"
+            },
+            "x-nullable": false
+          }
+        ],
+        "responses": {
+          "204": {
+            "description": ""
+          },
+          "default": {
+            "x-nullable": true,
+            "description": "",
+            "schema": {
+              "$ref": "#/definitions/ProblemDetails"
+            }
+          }
+        }
+      }
+    },
+    "/wapi/Users/Login": {
+      "post": {
+        "tags": [
+          "Users"
+        ],
+        "operationId": "Users_Login",
+        "consumes": [
+          "application/json-patch+json",
+          "application/json",
+          "text/json",
+          "application/*+json"
+        ],
+        "parameters": [
+          {
+            "name": "command",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/UserDto"
+            },
+            "x-nullable": false
+          }
+        ],
+        "responses": {
+          "default": {
+            "x-nullable": true,
+            "description": "",
+            "schema": {
+              "$ref": "#/definitions/ProblemDetails"
+            }
+          }
+        }
+      }
+    },
+    "/wapi/Users/CreateCommercial": {
+      "post": {
+        "tags": [
+          "Users"
+        ],
+        "operationId": "Users_CreateCommercial",
+        "consumes": [
+          "application/json-patch+json",
+          "application/json",
+          "text/json",
+          "application/*+json"
+        ],
+        "parameters": [
+          {
+            "name": "command",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/CreateCommercialUserCommand"
+            },
+            "x-nullable": false
+          }
+        ],
+        "responses": {
+          "default": {
+            "x-nullable": true,
+            "description": "",
+            "schema": {
+              "$ref": "#/definitions/ProblemDetails"
+            }
+          }
+        }
+      }
+    }
+  },
+  "definitions": {
+    "WeatherForecast": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "temperatureC",
+        "temperatureF"
+      ],
+      "properties": {
+        "dateFormatted": {
+          "type": "string"
+        },
+        "temperatureC": {
+          "type": "integer",
+          "format": "int32"
+        },
+        "summary": {
+          "type": "string"
+        },
+        "temperatureF": {
+          "type": "integer",
+          "format": "int32"
+        }
+      }
+    },
+    "ProblemDetails": {
+      "type": "object",
+      "additionalProperties": {},
+      "properties": {
+        "type": {
+          "type": "string"
+        },
+        "title": {
+          "type": "string"
+        },
+        "status": {
+          "type": "integer",
+          "format": "int32"
+        },
+        "detail": {
+          "type": "string"
+        },
+        "instance": {
+          "type": "string"
+        }
+      }
+    },
+    "CreateCityCommand": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "titleFa": {
+          "type": "string"
+        }
+      }
+    },
+    "UserDto": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "username": {
+          "type": "string"
+        },
+        "password": {
+          "type": "string"
+        }
+      }
+    },
+    "CreateCommercialUserCommand": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "latitude",
+        "longitude",
+        "areaId",
+        "activityFieldId"
+      ],
+      "properties": {
+        "cellPhone": {
+          "type": "string"
+        },
+        "password": {
+          "type": "string"
+        },
+        "contactTitle": {
+          "type": "string"
+        },
+        "contactName": {
+          "type": "string"
+        },
+        "email": {
+          "type": "string"
+        },
+        "address": {
+          "type": "string"
+        },
+        "latitude": {
+          "type": "number",
+          "format": "double"
+        },
+        "longitude": {
+          "type": "number",
+          "format": "double"
+        },
+        "areaId": {
+          "type": "integer",
+          "format": "int32"
+        },
+        "activityFieldId": {
+          "type": "integer",
+          "format": "int32"
+        },
+        "trashTypes": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/TrashTypeViewModel"
+          }
+        }
+      }
+    },
+    "TrashTypeViewModel": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "trashTypeId"
+      ],
+      "properties": {
+        "trashTypeId": {
+          "type": "integer",
+          "format": "int32"
+        },
+        "title": {
+          "type": "string"
+        }
+      }
+    }
+  },
+  "securityDefinitions": {
+    "Bearer": {
+      "type": "apiKey",
+      "description": "Please insert JWT with Bearer into field",
+      "name": "Authorization",
+      "in": "header"
+    }
+  },
+  "security": [
+    {
+      "Bearer": [
+        "Bearer"
+      ]
+    }
+  ]
+}
